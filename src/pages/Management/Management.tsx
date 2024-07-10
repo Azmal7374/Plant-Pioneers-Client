@@ -2,7 +2,7 @@
 const Management = () => {
     return (
         <div>
-            Management Page
+           <h1>Management Page</h1>
         </div>
     );
 };
