@@ -4,17 +4,18 @@ import Footer from "../pages/share/Footer";
 
 const Layout = () => {
   return (
+    <div className="">
+    {/* Adjust z-index for Navbar */}
+
     <div>
-      <div className="hidden lg:block bg-[#1B3048] text-white text-[12px] p-2">
-        <h3 className="text-center">10% OFF & FREE SHIPPING OVER $199! CODE: SUMMER10</h3>
+      <div className="relative z-10">
+        <Navbar />
       </div>
-      <Navbar />
-      <div className="block lg:hidden bg-[#1B3048] text-white text-[12px] p-2">
-        <h3 className="text-center">30% OFF & FREE SHIPPING OVER $299! CODE: SUMMER10</h3>
-      </div>
-      <Outlet />
-      <Footer />
+
+      <Outlet></Outlet>
+      <Footer></Footer>
     </div>
+  </div>
   );
 };
 

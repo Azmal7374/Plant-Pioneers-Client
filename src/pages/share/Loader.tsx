@@ -1,8 +1,12 @@
+import { InfinitySpin } from "react-loader-spinner";
 
 const Loader = () => {
     return (
-        <div>
-           <h1>Loader.....</h1> 
+        <div className='flex justify-center'>
+        <InfinitySpin
+        width='200'
+        color="#0d80a5"
+      />
         </div>
     );
 };

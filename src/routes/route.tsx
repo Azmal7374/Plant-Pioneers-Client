@@ -5,6 +5,8 @@ import Products from "../pages/Products/Products";
 import NotFound from "../pages/share/NotFound";
 import Management from "../pages/Management/Management";
 import HelpAndSupport from "../pages/share/HelpAndSupport";
+import AddProducts from "../pages/AddProducts/AddProducts";
+import ProductDetails from "../components/ProductDetails/ProductDetails";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +29,14 @@ const router = createBrowserRouter([
       {
         path: "/help&support",
         element: <HelpAndSupport />,
+      },
+      {
+        path: "/add-product",
+        element: <AddProducts />,
+      },
+      {
+        path: "/product/details",
+        element: <ProductDetails />,
       },
     ],
   },
