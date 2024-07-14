@@ -1,7 +1,10 @@
 import { Button, Dialog, Input, Textarea } from "@material-tailwind/react";
 import { useState } from "react";
+import { toast } from "sonner";
+import { useAddNewProductMutation } from "../../../redux/features/product/productSlice";
 import { ImSpinner9 } from "react-icons/im";
 const AddProductModal = ({ open, handleOpen }: any) => {
+  const [addNewProduct, { isLoading }] = useAddNewProductMutation();
   const [formValues, setFormValues] = useState({
     imageLink: "",
     title: "",
@@ -23,7 +26,53 @@ const AddProductModal = ({ open, handleOpen }: any) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const { category, rating } = formValues;
+    const toastId = toast.loading("Logging in");
+
+    if (category === "default" || rating === "default") {
+      handleOpen();
+      toast.warning("Please select a valid category and rating.", {
+        id: toastId,
+        duration: 2000,
+      });
+
+      return;
+    }
+
+    const payload = {
+      image: formValues.imageLink,
+      title: formValues.title,
+      category: formValues.category,
+      description: formValues.description,
+      price: parseInt(formValues.price),
+      rating: parseInt(formValues.rating),
+      quantity: parseInt(formValues.quantity),
+    };
+
+    const result = await addNewProduct(payload).unwrap();
+
+    handleOpen();
+
+    setFormValues({
+      imageLink: "",
+      title: "",
+      description: "",
+      price: "",
+      category: "default",
+      quantity: "",
+      rating: "default",
+    });
+
+    toast.success("Product Added Successfully", {
+      id: toastId,
+      duration: 2000,
+    });
   };
+  // bg-[#1B3048]
+  // text-[#1B3048]
+  //   <option value="default" disabled>
+  //   Select a category
+
   return (
     <div>
       <Dialog
@@ -60,8 +109,25 @@ const AddProductModal = ({ open, handleOpen }: any) => {
               onPointerLeaveCapture={undefined}
               crossOrigin={undefined}
             />
+
+            <select
+              name="category"
+              value={formValues.category}
+              onChange={handleChange}
+              className="outline-none px-7 py-2 rounded-lg border border-[#1B3048]"
+            >
+              <option value="default" disabled>
+                Select a category
+              </option>
+              <option value="Indoor Plants">Insite Plants</option>
+              <option value="Outdoor Trees">Outsite Plants</option>
+              <option value="Fruit Bearing Trees">Fruit Plants</option>
+              <option value="Flower Trees">Flower Plants</option>
+            </select>
+
             <Input
               label="Price"
+              className="border border-[#1B3048]"
               required
               type="number"
               name="price"
@@ -72,25 +138,11 @@ const AddProductModal = ({ open, handleOpen }: any) => {
               crossOrigin={undefined}
             />
 
-            <select
-              name="category"
-              value={formValues.category}
-              onChange={handleChange}
-              className="outline-none px-7 py-2 rounded-lg border border-gray-700"
-            >
-              <option value="default" disabled>
-                Select a category
-              </option>
-              <option value="Indoor Plants">Indoor Plants</option>
-              <option value="Outdoor Trees">Outdoor Trees</option>
-              <option value="Fruit Bearing Trees">Fruit Bearing Trees</option>
-              <option value="Flower Trees">Flower Trees</option>
-            </select>
-
             <Input
               label="Quantity"
               type="number"
               required
+              className="border border-[#1B3048]"
               name="quantity"
               value={formValues.quantity}
               onChange={handleChange}
@@ -103,7 +155,7 @@ const AddProductModal = ({ open, handleOpen }: any) => {
               name="rating"
               value={formValues.rating}
               onChange={handleChange}
-              className="outline-none px-7 py-2 rounded-lg border border-gray-700"
+              className="outline-none px-7 py-2 rounded-lg border border-[#1B3048]"
             >
               <option value="default" disabled>
                 Ratings
@@ -114,7 +166,6 @@ const AddProductModal = ({ open, handleOpen }: any) => {
               <option value="4">4 Stars</option>
               <option value="5">5 Stars</option>
             </select>
-
             <Textarea
               label="Description"
               required
@@ -124,18 +175,22 @@ const AddProductModal = ({ open, handleOpen }: any) => {
               onPointerEnterCapture={undefined}
               onPointerLeaveCapture={undefined}
             />
-
             <Button
               type="submit"
-              className="bg-[#1B3048] capitalize text-lg"
+              className="bg-[#1B3048] hover:bg-[#275fa0] capitalize text-lg"
               placeholder={undefined}
               onPointerEnterCapture={undefined}
               onPointerLeaveCapture={undefined}
+              disabled={isLoading}
             >
-              <div className="flex justify-center items-center gap-4">
-               
-                Add Product
-              </div>
+              {isLoading ? (
+                <div className="flex justify-center items-center gap-4">
+                  <ImSpinner9 className="animate-spin text-[20px]" />
+                  Product Adding
+                </div>
+              ) : (
+                "Product Add "
+              )}
             </Button>
           </form>
         </div>
