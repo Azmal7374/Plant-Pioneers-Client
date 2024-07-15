@@ -27,7 +27,7 @@ const AddProductModal = ({ open, handleOpen }: any) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const { category, rating } = formValues;
-    const toastId = toast.loading("Logging in");
+    const toastId = toast.loading("Please Wait!!");
 
     if (category === "default" || rating === "default") {
       handleOpen();

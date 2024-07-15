@@ -19,7 +19,7 @@ const productsApi = baseApi.injectEndpoints({
                 search,
                 priceOrder,
                 page=1,
-                limit=4,
+                limit=6,
             }) =>{
                 const queryParams = new URLSearchParams();
 

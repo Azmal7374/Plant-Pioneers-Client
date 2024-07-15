@@ -1,14 +1,33 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useParams } from "react-router-dom";
+import { useAppDispatch } from "../../redux/hook";
+import { useGetSingleProductQuery, useProductAvailabilityCheckMutation } from "../../redux/features/product/productSlice";
+import Loader from "../../pages/share/Loader";
 
 const ProductDetails = () => {
-    return (
-      <div>
+  const dispatch = useAppDispatch();
+
+  const { id } = useParams();
+
+  const { data, isLoading } = useGetSingleProductQuery(id);
+
+  const [checkIfAvailable, { isLoading: isCheckingLoading }] =
+    useProductAvailabilityCheckMutation({});
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  
+  return (
+    <div>
       <div className=" py-6 sm:py-8 lg:py-12">
         <div className="mx-auto max-w-screen-xl px-4 md:px-8">
-          <div className="grid gap-8 ">
+          <div className="grid gap-8 md:grid-cols-2">
             <div className="grid gap-4 lg:grid-cols-5">
-              <div className="relative overflow-hidden rounded-lg lg:col-span-4">
+              <div className="relative overflow-hidden rounded-lg bg-gray-100 lg:col-span-4">
                 <img
-                  src="https://www.thetreecenter.com/c/uploads/schipka-cherry-laurel-1-1-450x450.webp"
+                  src={data.data.image}
                   loading="lazy"
                   alt="Photo by Himanshu Dewangan"
                   className="h-full w-full object-cover object-center"
@@ -18,17 +37,17 @@ const ProductDetails = () => {
 
             <div className="md:py-8">
               <div className="mb-2 md:mb-3">
-                <span className="mb-1 inline-block text-[#1B3048] text-">
-                Fau
+                <span className="mb-0.5 inline-block text-[#1B3048]  text-lg">
+                  {data.data.category}
                 </span>
-                <h2 className="text-2xl font-bold text-[#1B3048] lg:text-3xl">
-                Nai
+                <h2 className="text-2xl font-bold text-[#275fa0] lg:text-3xl">
+                  {data.data.title}
                 </h2>
               </div>
 
               <div className="mb-6 flex items-center gap-3 md:mb-10">
-                <div className="flex h-7 items-center gap-1 rounded-xl bg-[#1B3048]  px-3 text-white">
-                  <span className="text-lg">2000</span>
+                <div className="flex h-7 items-center gap-1 rounded-full bg-[#1B3048] px-3 text-white">
+                  <span className="text-lg">{data.data.rating}</span>
 
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -41,21 +60,28 @@ const ProductDetails = () => {
                 </div>
 
                 <div>
-                  <p className="text-lg bg-[#1B3048] text-white px-4 rounded-xl">
-                    Quantity Available:20000
+                  <p className="text-lg bg-[#1B3048]  text-white px-3 rounded-full">
+                    Available quantity: {data.data.quantity}
                   </p>
                 </div>
               </div>
 
-              <div className="mb-6 flex items-center gap-2 text-black text-lg">
-                <p>sei proooooduct</p>
+              <div className="mb-6 flex items-center gap-2 text-[#1B3048]  text-lg">
+                <p>{data.data.description}</p>
               </div>
 
               <div className="flex gap-2.5">
                 <button
-                  className="inline-block flex-1 rounded-lg bg-[#1B3048] px-8 py-3 text-center text-sm font-semibold text-white outline-none transition duration-100 hover:bg-[#275fa0] focus-visible:ring active:bg-[#508D4E] sm:flex-none md:text-base"
+                  
+                  className="inline-block flex-1 rounded-lg bg-[#1B3048]  px-8 py-3 text-center text-sm font-semibold text-white outline-none transition duration-100 hover:bg-[#275fa0] focus-visible:ring active:bg-[#1B3048] sm:flex-none md:text-base"
                 >
-                 Add To Cart
+                  {isCheckingLoading ? (
+                    <div className="flex justify-center items-center gap-4">
+                      Please Wait
+                    </div>
+                  ) : (
+                    "Add to cart"
+                  )}
                 </button>
               </div>
             </div>
@@ -63,8 +89,7 @@ const ProductDetails = () => {
         </div>
       </div>
     </div>
-
-    );
+  );
 };
 
 export default ProductDetails;
