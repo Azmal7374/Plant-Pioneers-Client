@@ -3,15 +3,69 @@ import { GrFormNextLink, GrFormPreviousLink } from "react-icons/gr";
 import { MdAddCircleOutline } from "react-icons/md";
 import UpdateModal from "../../components/Modals/UpdateModal/UpdateModal";
 import AddProductModal from "../../components/Modals/AddProductModal/AddProductModal";
-import { useState } from "react";
-
+import { SetStateAction, useState } from "react";
+import {
+  useDeleteProductMutation,
+  useGetAllProductsQuery,
+} from "../../redux/features/product/productSlice";
+import Loader from "../share/Loader";
+import Swal from "sweetalert2";
 
 const Management = () => {
-  const [openAddProductModal, setOpenAddProductModal] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
 
-const handleAddProductModal = () => {
-  setOpenAddProductModal(prevState => !prevState);
-};
+  const { data, isLoading: isProductsLoading } = useGetAllProductsQuery({
+    page: currentPage,
+    limit: 6,
+  });
+
+  const [deleteProduct] = useDeleteProductMutation();
+
+  const [openUpdateModal, setOpenUpdateModal] = useState(false);
+  const [productToUpdate, setProductToUpdate] = useState("");
+
+  const handleUpdateModalOpen = (item: SetStateAction<string>) => {
+    setOpenUpdateModal(!openUpdateModal);
+    setProductToUpdate(item);
+  };
+
+  const [openAddProductModal, setOpenAddProductModal] = useState(false);
+  const handleAddProductModal = () =>
+    setOpenAddProductModal(!openAddProductModal);
+
+  const handleDeleteProduct = async (item: { _id: any; title: string }) => {
+    Swal.fire({
+      title: `Are you sure you want to delete ${item.title}?`,
+      text: "",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        await deleteProduct(item._id);
+
+        Swal.fire({
+          title: "Product has been deleted",
+          text: "",
+          icon: "success",
+        });
+      }
+    });
+  };
+
+  if (isProductsLoading) {
+    return <Loader />;
+  }
+
+  const totalPage = Math.ceil(data?.data?.total_products / 6);
+  const pages = [...new Array(totalPage).fill(0)];
+
+  const handlePagination = (page: number) => {
+    setCurrentPage(page + 1);
+    window.scrollTo(0, 200);
+  };
 
   return (
     <div>
@@ -35,7 +89,7 @@ const handleAddProductModal = () => {
               </h2>
 
               <Button
-                 onClick={handleAddProductModal}
+                onClick={handleAddProductModal}
                 size="md"
                 className="bg-[#1B3048] hover:bg-[#275fa0] capitalize text-[15px] flex justify-center items-center gap-2 p-2"
                 placeholder={undefined}
@@ -90,70 +144,77 @@ const handleAddProductModal = () => {
                     </tr>
                   </thead>
                   <tbody className="text-sm divide-y divide-gray-100">
-                    <tr key="">
-                      <td className="p-2 whitespace-nowrap">
-                        <div className="flex items-center justify-center">
-                          <div className="">
-                            <img
-                              className="rounded-full size-14"
-                              src="https://www.thetreecenter.com/c/uploads/2016/08/Franklins_Gem_Korean_Boxwood-jpg-340x453.webp"
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                      </td>
+                    {data.data.data.length === 0
+                      ? null
+                      : data.data.data.map((item: any, index: number) => (
+                          <tr key={index}>
+                            <td className="p-2 whitespace-nowrap">
+                              <div className="flex items-center justify-center">
+                                <div className="">
+                                  <img
+                                    className="rounded-full size-16"
+                                    src={item.image}
+                                    alt={item.title}
+                                  />
+                                </div>
+                              </div>
+                            </td>
 
-                      <td className="p-2 whitespace-nowrap">
-                        <div className="text-center text-[14px] text-[#1B3048]">
-                          Title
-                        </div>
-                      </td>
-                      <td className="p-2 whitespace-nowrap">
-                        <div className="text-center text-[14px] text-[#1B3048]">
-                          Category
-                        </div>
-                      </td>
+                            <td className="p-2 whitespace-nowrap">
+                              <div className="text-center text-[15px] text-[#1B3048]">
+                                {item.title}
+                              </div>
+                            </td>
+                            <td className="p-2 whitespace-nowrap">
+                              <div className="text-center text-[15px] text-[#1B3048]">
+                                {item.category}
+                              </div>
+                            </td>
 
-                      <td className="p-2 whitespace-nowrap">
-                        <div className="text-center font-medium text-[14px] text-[#1B3048]">
-                          price
-                        </div>
-                      </td>
+                            <td className="p-2 whitespace-nowrap">
+                              <div className="text-center font-medium text-[15px] text-[#1B3048]">
+                                {item.price}
+                              </div>
+                            </td>
 
-                      <td className="p-2 whitespace-nowrap">
-                        <div className="text-center text-[14px] text-[#1B3048]">
-                          Quantity
-                        </div>
-                      </td>
+                           
+                            <td className="p-2 whitespace-nowrap">
+                              <div className="text-center text-[15px] text-[#1B3048]">
+                                {item.quantity}
+                              </div>
+                            </td>
 
-                      <td className="p-2 whitespace-nowrap">
-                        <div className="text-center text-[14px] text-[#1B3048]">
-                          Ratting
-                        </div>
-                      </td>
+                            <td className="p-2 whitespace-nowrap">
+                              <div className="text-center text-[15px] text-[#1B3048]">
+                                {item.rating}
+                              </div>
+                            </td>
 
-                      <td className="p-2 flex justify-center items-center gap-3">
-                        <Button
-                          size="sm"
-                          className="capitalize bg-[#1B3048]"
-                          placeholder={undefined}
-                          onPointerEnterCapture={undefined}
-                          onPointerLeaveCapture={undefined}
-                        >
-                          Update
-                        </Button>
+                            <td className="p-2 flex justify-center items-center gap-3">
+                              <Button
+                                onClick={() => handleUpdateModalOpen(item)}
+                                size="sm"
+                                className="capitalize bg-[#1B3048]"
+                                placeholder={undefined}
+                                onPointerEnterCapture={undefined}
+                                onPointerLeaveCapture={undefined}
+                              >
+                                Update
+                              </Button>
 
-                        <Button
-                          size="sm"
-                          className="capitalize bg-red-500"
-                          placeholder={undefined}
-                          onPointerEnterCapture={undefined}
-                          onPointerLeaveCapture={undefined}
-                        >
-                          Delete
-                        </Button>
-                      </td>
-                    </tr>
+                              <Button
+                                onClick={() => handleDeleteProduct(item)}
+                                size="sm"
+                                className="capitalize bg-red-500"
+                                placeholder={undefined}
+                                onPointerEnterCapture={undefined}
+                                onPointerLeaveCapture={undefined}
+                              >
+                                Delete
+                              </Button>
+                            </td>
+                          </tr>
+                        ))}
                   </tbody>
                 </table>
 
@@ -163,6 +224,10 @@ const handleAddProductModal = () => {
                   <Button
                     variant="text"
                     className="hidden md:flex lg:flex items-center gap-2 text-lg capitalize"
+                    onClick={() => {
+                      setCurrentPage(currentPage - 1);
+                      window.scrollTo(0, 200);
+                    }}
                     placeholder={undefined}
                     onPointerEnterCapture={undefined}
                     onPointerLeaveCapture={undefined}
@@ -171,15 +236,27 @@ const handleAddProductModal = () => {
                     After
                   </Button>
 
-                  <button
-                    key=""
-                    className="px-3 py-1 font-bold text-[12px] md:text-[18px] lg:text-[18px] hover:bg-[#2121211a] rounded-lg"
-                  >
-                    index+1
-                  </button>
+                  {pages.map((_item, index) => (
+                    <button
+                      key={index}
+                      className={` px-3 py-1 font-bold text-[12px] md:text-[18px] lg:text-[18px] hover:bg-[#2121211a] rounded-lg ${
+                        currentPage === index + 1
+                          ? "bg-[#1B3048] text-white rounded-lg hover:!bg-[#275fa0]"
+                          : "bg-transparent"
+                      }`}
+                      onClick={() => handlePagination(index)}
+                    >
+                      {index + 1}
+                    </button>
+                  ))}
                   <Button
-                    variant="text"
-                    className="hidden md:flex lg:flex items-center gap-2 text-lg capitalize"
+                     variant="text"
+                     className="hidden md:flex lg:flex items-center gap-2 text-lg capitalize"
+                     onClick={() => {
+                       setCurrentPage(currentPage + 1);
+                       window.scrollTo(0, 200);
+                     }}
+                     disabled={currentPage === totalPage}
                     placeholder={undefined}
                     onPointerEnterCapture={undefined}
                     onPointerLeaveCapture={undefined}
@@ -189,7 +266,11 @@ const handleAddProductModal = () => {
                   </Button>
                 </div>
 
-                <UpdateModal />
+                <UpdateModal
+                 open={openUpdateModal}
+                 handleOpen={handleUpdateModalOpen}
+                 productToUpdate={productToUpdate}
+                />
 
                 <AddProductModal
                   open={openAddProductModal}

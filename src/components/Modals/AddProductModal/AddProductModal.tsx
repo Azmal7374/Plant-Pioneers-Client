@@ -68,10 +68,7 @@ const AddProductModal = ({ open, handleOpen }: any) => {
       duration: 2000,
     });
   };
-  // bg-[#1B3048]
-  // text-[#1B3048]
-  //   <option value="default" disabled>
-  //   Select a category
+  
 
   return (
     <div>
@@ -160,11 +157,11 @@ const AddProductModal = ({ open, handleOpen }: any) => {
               <option value="default" disabled>
                 Ratings
               </option>
-              <option value="1">1 Star</option>
-              <option value="2">2 Stars</option>
-              <option value="3">3 Stars</option>
-              <option value="4">4 Stars</option>
-              <option value="5">5 Stars</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
             </select>
             <Textarea
               label="Description"

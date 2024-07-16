@@ -1,6 +1,10 @@
 import { baseApi } from "../../api/baseApi";
 
 
+type UpdateProductArgs = {
+    id: string;
+    payload: any;
+  };
 
 const productsApi = baseApi.injectEndpoints({
     endpoints:(builder) =>({
@@ -55,9 +59,26 @@ const productsApi = baseApi.injectEndpoints({
                 url:`product/check-availability`,
                 params: {id:id},
             })
-        })
+        }),
+        productUpdate: builder.mutation({
+            query: ({ id, payload }: UpdateProductArgs) => ({
+              url: `/product/update-product`,
+              method: "PUT",
+              body: payload,
+              params: { id: id },
+            }),
+            invalidatesTags: ["Product", "ProductByCategory"],
+          }),
+          deleteProduct: builder.mutation({
+            query: (id) => ({
+              url: "/product/delete-product",
+              method: "DELETE",
+              params: { id: id },
+            }),
+            invalidatesTags: ["Product", "ProductByCategory"],
+          }),
     })
 })
 
 
-export const {useAddNewProductMutation, useGetAllProductsQuery, useGetAllProductByCategoryQuery, useGetSingleProductQuery,useProductAvailabilityCheckMutation} =productsApi
+export const {useAddNewProductMutation, useGetAllProductsQuery, useGetAllProductByCategoryQuery, useGetSingleProductQuery,useProductAvailabilityCheckMutation, useProductUpdateMutation, useDeleteProductMutation } =productsApi
