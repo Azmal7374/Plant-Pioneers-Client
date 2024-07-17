@@ -57,6 +57,7 @@ const productsApi = baseApi.injectEndpoints({
         productAvailabilityCheck: builder.mutation({
             query:(id) =>({
                 url:`product/check-availability`,
+                method: "POST",
                 params: {id:id},
             })
         }),
@@ -77,8 +78,16 @@ const productsApi = baseApi.injectEndpoints({
             }),
             invalidatesTags: ["Product", "ProductByCategory"],
           }),
+          orderCreate: builder.mutation({
+            query: (payload) => ({
+              url: "/products/create-order",
+              method: "POST",
+              body: payload,
+            }),
+            invalidatesTags: ["Product", "ProductByCategory"],
+          }),
     })
 })
 
 
-export const {useAddNewProductMutation, useGetAllProductsQuery, useGetAllProductByCategoryQuery, useGetSingleProductQuery,useProductAvailabilityCheckMutation, useProductUpdateMutation, useDeleteProductMutation } =productsApi
+export const {useAddNewProductMutation, useGetAllProductsQuery, useGetAllProductByCategoryQuery, useGetSingleProductQuery,useProductAvailabilityCheckMutation, useProductUpdateMutation, useDeleteProductMutation,  useOrderCreateMutation } =productsApi

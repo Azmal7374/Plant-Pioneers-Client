@@ -9,6 +9,8 @@ import { GrFormNextLink, GrFormPreviousLink } from "react-icons/gr";
 import { useAppDispatch } from "../../redux/hook";
 import { useGetAllProductsQuery, useProductAvailabilityCheckMutation } from "../../redux/features/product/productSlice";
 import Loader from "../share/Loader";
+import { toast } from "sonner";
+import { addToCart, cartCount } from "../../redux/features/addCart/cartSlice";
 // import { toast } from "sonner";
 
 const Products = () => {
@@ -28,7 +30,6 @@ const Products = () => {
     search,
     priceOrder,
   });
-  console.log(allProducts)
 
   const [currentProductId, setCurrentProductId] = useState<string | null>(null);
 
@@ -46,10 +47,36 @@ const Products = () => {
     setCurrentPage(page + 1);
     window.scrollTo(0, 200);
   };
+  
+  const handleAddToCart = async (item: any) => {
+    console.log(item._id)
+    setCurrentProductId(item._id);
+    const result = await checkIfAvailable(item._id);
+    const toastId = toast.loading("Please Wait!!");
+    if (result.error) {
+        toast.warning("This Product Stock Out!!", {
+            id: toastId,
+            duration: 2000,
+          });
+      setCurrentProductId(null);
 
-  const handleAddToCart = async (item: any) => { 
+      return;
+    }
+
+    try {
+      dispatch(cartCount(item._id));
+      dispatch(addToCart(item));
+      toast.success(`${item.title} has been added to your cart.`, {
+        id: toastId,
+        duration: 2000,
+      });
+    } catch (error) {
+        toast.warning("Opps! Product is Not Available!!", {
+            id: toastId,
+            duration: 2000,
+          });
+    }
   };
-
   return (
     <div className="bg-[#EEEDEB]">
       <div
@@ -147,7 +174,7 @@ const Products = () => {
                       isCheckingLoading && item._id === currentProductId
                     }
                     onClick={() => handleAddToCart(item)}
-                    className="text-white flex justify-center items-center gap-3 font-bold rounded-xl bg-[#275fa0] p-2 hover:bg-[#1B3048] "
+                    className="text-white flex justify-center items-center gap-3 font-bold rounded-xl bg-[#508D4E] p-2 hover:bg-[#1A5319]"
                   >
                     <HiOutlineShoppingBag size={"25"} />
                     <h1>

@@ -3,12 +3,15 @@ import { Badge, Drawer } from "@material-tailwind/react";
 import { useState } from "react";
 import { CiShoppingCart } from "react-icons/ci";
 import { IoIosMenu } from "react-icons/io";
+import { useAppSelector } from "../../redux/hook";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   const openDrawer = () => setOpen(true);
   const closeDrawer = () => setOpen(false);
+  const countCartValue = useAppSelector((state) => state.cart.count);
+
 
   return (
     <div className="flex justify-between items-center bg- py-3 px-10 md:px-10 lg:px-20 shadow-xl sticky top-0 z-10 bg-blue-gray-50">
@@ -24,7 +27,7 @@ const Navbar = () => {
         <NavLink to={"/products"}>Products</NavLink>
         <NavLink to={"/add-product"}>Add Product</NavLink>
         <NavLink to={"/cart"}>
-          <Badge content="1">
+          <Badge content={countCartValue}>
             <CiShoppingCart size={"30"} />
           </Badge>
         </NavLink>
@@ -66,7 +69,7 @@ const Navbar = () => {
             </NavLink>
             <NavLink  className="hover:bg-blue-gray-50 p-2" onClick={closeDrawer}  to={"/add-product"}>Add Product</NavLink>
             <NavLink className="hover:bg-blue-gray-50 p-2" onClick={closeDrawer} to={"/cart"}>
-              <Badge content="1">
+              <Badge content={countCartValue}>
                 <CiShoppingCart  size={"30"} />
               </Badge>
             </NavLink>

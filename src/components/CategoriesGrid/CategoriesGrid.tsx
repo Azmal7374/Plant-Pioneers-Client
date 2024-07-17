@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const CategoriesGrid = () => {
   return (
     <div>
@@ -12,8 +14,8 @@ const CategoriesGrid = () => {
           </div>
 
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:gap-6 xl:gap-8">
-            <a
-              href="#"
+            <Link
+                to={`/category/Insite Plants`}
               className="group relative flex h-48 items-center justify-center overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-80"
             >
               <img
@@ -28,10 +30,10 @@ const CategoriesGrid = () => {
               <span className="relative bg-[#1B3048] p-2 rounded-lg text-sm text-white md:text-lg">
                 Insite Plants
               </span>
-            </a>
+            </Link>
 
-            <a
-              href="#"
+            <Link
+             to={`/category/Outsite Plants`}
               className="group relative flex h-48 items-center justify-center overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-80"
             >
               <img
@@ -46,10 +48,10 @@ const CategoriesGrid = () => {
               <span className="relative bg-[#1B3048] p-2 rounded-lg text-sm text-white md:text-lg">
                Outsite Plants
               </span>
-            </a>
+            </Link>
 
-            <a
-              href="#"
+            <Link
+              to={`/category/Fruit Plants`}
               className="group relative flex h-48 items-center justify-center overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-80"
             >
               <img
@@ -64,10 +66,10 @@ const CategoriesGrid = () => {
               <span className="relative bg-[#1B3048] p-2 rounded-lg text-sm text-white md:text-lg">
                 Fruits Plants
               </span>
-            </a>
+            </Link>
 
-            <a
-              href="#"
+            <Link
+              to={`/category/Flower Plants`}
               className="group relative flex h-48 items-center justify-center overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-80"
             >
               <img
@@ -82,7 +84,7 @@ const CategoriesGrid = () => {
               <span className="relative bg-[#1B3048] p-2 rounded-lg text-sm text-white md:text-lg">
                 Flower Plants
               </span>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

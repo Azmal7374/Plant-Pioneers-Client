@@ -7,6 +7,8 @@ import Management from "../pages/Management/Management";
 import HelpAndSupport from "../pages/share/HelpAndSupport";
 import AddProducts from "../pages/AddProducts/AddProducts";
 import ProductDetails from "../components/ProductDetails/ProductDetails";
+import Cart from "../components/Cart/Cart";
+import BrowseByCategory from "../components/BrowserProducts/BrowseCategory";
 
 const router = createBrowserRouter([
   {
@@ -35,9 +37,19 @@ const router = createBrowserRouter([
         element: <AddProducts />,
       },
       {
+        path: "/category/:categoryName",
+        element: <BrowseByCategory />,
+      },
+      {
         path: "/product-details/:id",
         element: <ProductDetails />,
       },
+      {
+        path: "/cart",
+        element: <Cart />,
+      },
+     
+
     ],
   },
 ]);
