@@ -9,6 +9,7 @@ import AddProducts from "../pages/AddProducts/AddProducts";
 import ProductDetails from "../components/ProductDetails/ProductDetails";
 import Cart from "../components/Cart/Cart";
 import BrowseByCategory from "../components/BrowserProducts/BrowseCategory";
+import Checkout from "../components/Checkout/Checkout";
 
 const router = createBrowserRouter([
   {
@@ -48,7 +49,10 @@ const router = createBrowserRouter([
         path: "/cart",
         element: <Cart />,
       },
-     
+      {
+        path: "/checkout",
+        element: <Checkout />,
+      },
 
     ],
   },
