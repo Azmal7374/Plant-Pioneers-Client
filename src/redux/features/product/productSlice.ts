@@ -80,7 +80,7 @@ const productsApi = baseApi.injectEndpoints({
           }),
           orderCreate: builder.mutation({
             query: (payload) => ({
-              url: "/products/create-order",
+              url: "product/create-order",
               method: "POST",
               body: payload,
             }),

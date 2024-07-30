@@ -2,24 +2,21 @@ import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <section className="pt-20 pb-10 bg-blue-gray-50">
+    <section className="pt-20 pb-10 ">
+      <div className="md:flex gap-10 justify-center">
       <div className="max-w-screen-xl mx-auto text-gray-600 gap-x-12 items-center justify-between overflow-hidden md:flex md:px-8">
         <div className="flex-none space-y-5 px-4 sm:max-w-lg md:px-0 lg:max-w-xl">
-          <h1 className="text-lg text-green-700 font-medium">
-            Over 200 trees sold
-          </h1>
-          <h2 className="text-4xl text-gray-800 font-extrabold md:text-5xl">
-            Nurturing Nature's Beauty in Every Home
+        
+          <h2 className="text-4xl text-[#1B3048] font-extrabold md:text-5xl">
+          Fostering Natural Beauty in Every Living Space
           </h2>
-          <p className="text-lg">
-            Discover our exclusive collection of premium plants, carefully
-            selected to enhance your home or office and bring vibrant life to
-            your space.
+          <p className="text-lg text-[#275fa0]">
+          Browse our exclusive collection of high-quality plants, carefully curated to enhance your home or office and add a touch of vibrant life to your space.
           </p>
           <div className="items-center gap-x-3 space-y-3 sm:flex sm:space-y-0">
             <Link
               to={"/products"}
-              className="block py-2 px-4 text-center text-white font-medium bg-[#508D4E] duration-150 hover:bg-[#1A5319] active:bg-[#1A5319] rounded-lg shadow-lg hover:shadow-none"
+              className="block py-2 px-4 text-center text-white font-medium bg-[#1B3048]  duration-150 hover:bg-[#275fa0] active:bg-[#275fa0] rounded-lg shadow-lg hover:shadow-none"
             >
               Let's Explore
             </Link>
@@ -29,17 +26,11 @@ const Hero = () => {
           <img src="" className="md:rounded-tl-[108px]" alt="" />
         </div>
       </div>
-      <div className="mt-[80px] px-4 md:px-8">
-        <p className="text-center text-xl text-gray-700 font-semibold">
-          Loved by Plant Enthusiasts and Businesses Alike
-        </p>
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 justify-items-center items-center gap-x-12 gap-y-6">
-          <img src="" className="w-[140px]" />
-          <img src="" className="w-[200px]" />
-          <img src="" className="w-[200px]" />
-          <img src="" className="w-[140px]" />
-        </div>
+      <div className="md:px-8 max-w-screen-xl mx-auto ">
+        <img className="px-4 h-[400px] " src="https://media.istockphoto.com/id/1475314230/photo/aloe-vera-plant.webp?b=1&s=170667a&w=0&k=20&c=4pGoO-6ZXm2QS7-QxFjX8PoYetcnWPvMVxPT46eN2ms=" alt="" />
       </div>
+      </div>
+     
     </section>
   );
 };

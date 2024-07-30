@@ -2,13 +2,17 @@
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { Button } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
- 
+
 import Swal from "sweetalert2";
 import { useState } from "react";
 import { useAppDispatch } from "../../redux/hook";
-import { useGetAllProductsQuery, useProductAvailabilityCheckMutation } from "../../redux/features/product/productSlice";
+import {
+  useGetAllProductsQuery,
+  useProductAvailabilityCheckMutation,
+} from "../../redux/features/product/productSlice";
 import { addToCart, cartCount } from "../../redux/features/addCart/cartSlice";
 import { toast } from "sonner";
+import Loader from "../share/Loader";
 
 const BrowseProducts = () => {
   const dispatch = useAppDispatch();
@@ -20,11 +24,7 @@ const BrowseProducts = () => {
     useProductAvailabilityCheckMutation({});
 
   if (isLoading) {
-    return (
-      <div className="text-center bg-[#EEEDEB] text-4xl py-10">
-        Loading.....
-      </div>
-    );
+    return <Loader />;
   }
 
   const firstThreeProducts = data?.data?.data?.slice(0, 3);
@@ -34,10 +34,10 @@ const BrowseProducts = () => {
     const result = await checkIfAvailable(item._id);
     const toastId = toast.loading("Please Wait!!");
     if (result.error) {
-        toast.warning("This Product Stock Out!!", {
-            id: toastId,
-            duration: 2000,
-          });
+      toast.warning("This Product Stock Out!!", {
+        id: toastId,
+        duration: 2000,
+      });
       setCurrentProductId(null);
 
       return;
@@ -51,16 +51,16 @@ const BrowseProducts = () => {
         duration: 2000,
       });
     } catch (error) {
-        toast.warning("Opps! Product is Not Available!!", {
-            id: toastId,
-            duration: 2000,
-          });
+      toast.warning("Opps! Product is Not Available!!", {
+        id: toastId,
+        duration: 2000,
+      });
     }
   };
 
   return (
     <section className="py-20  ">
-      <h2 className="text-2xl font-bold text-[#1B3048] lg:text-4xl dark:text-white text-center">
+      <h2 className="text-2xl font-bold text-[#1B3048] lg:text-4xl dark:text-[#275fa0] text-center">
         Browse our <span className="text-[#275fa0]">Products</span>
       </h2>
       <div className="mx-auto grid max-w-screen-xl grid-cols-1 gap-6 p-6 md:grid-cols-2 lg:grid-cols-3">

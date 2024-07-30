@@ -39,7 +39,7 @@ type TCartItem = {
         );
         if (existingItem) {
           if (existingItem.quantity === action.payload.quantity) {
-            throw new Error("Opps!!");
+            throw new Error("Opps!! Already Added");
           }
   
           existingItem.quantity += 1;

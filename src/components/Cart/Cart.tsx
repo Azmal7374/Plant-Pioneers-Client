@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import bannerBg from "../../assets/product-page-banner-bg.jpg";
 import { useAppSelector } from "../../redux/hook";
 
 const Cart = () => {
@@ -71,12 +70,12 @@ const Cart = () => {
                 <p className="text-lg text-gray-800 font-bold">Total</p>
                 <div className="">
                   <p className="mb-1 text-lg text-gray-800 font-bold">
-                    ৳ {subtotal}
+                     {subtotal}
                   </p>
                 </div>
               </div>
               <Link
-                to={"/checkout"}
+                to="/checkout"
                 className="block text-center mt-6 w-full rounded-md bg-[#508D4E] py-1.5 font-bold text-lg text-white hover:bg-[#1A5319]"
               >
                 Check out

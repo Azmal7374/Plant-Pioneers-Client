@@ -59,7 +59,6 @@ const Products = () => {
             duration: 2000,
           });
       setCurrentProductId(null);
-
       return;
     }
 

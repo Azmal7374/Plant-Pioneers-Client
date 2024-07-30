@@ -1,84 +1,226 @@
+import { Tab, TabPanel, Tabs, TabsBody, TabsHeader } from "@material-tailwind/react";
+
  
 const Gallery = () => {
+  const data = [
+    {
+      label: "Indoor",
+      value: "indoor",
+      images: [
+        {
+          imageLink:
+            "https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+        },
+        {
+          imageLink:
+            "https://images.unsplash.com/photo-1432462770865-65b70566d673?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+        },
+        {
+          imageLink:
+            "https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2560&q=80",
+        },
+        {
+          imageLink:
+            "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80",
+        },
+        {
+          imageLink:
+            "https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2762&q=80",
+        },
+        {
+          imageLink:
+            "https://images.unsplash.com/photo-1682407186023-12c70a4a35e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80",
+        },
+      ],
+    },
+    {
+      label: "Outdoor",
+      value: "outdoor",
+      images: [
+        {
+          imageLink:
+            "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80",
+        },
+        {
+          imageLink:
+            "https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2762&q=80",
+        },
+        {
+          imageLink:
+            "https://images.unsplash.com/photo-1682407186023-12c70a4a35e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80",
+        },
+        {
+          imageLink:
+            "https://demos.creative-tim.com/material-kit-pro/assets/img/examples/blog5.jpg",
+        },
+        {
+          imageLink:
+            "https://material-taillwind-pro-ct-tailwind-team.vercel.app/img/content2.jpg",
+        },
+        {
+          imageLink:
+            "https://images.unsplash.com/photo-1620064916958-605375619af8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1493&q=80",
+        },
+      ],
+    },
+    {
+      label: "Fruits",
+      value: "fruits",
+      images: [
+        {
+          imageLink:
+            "https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+        },
+        {
+          imageLink:
+            "https://images.unsplash.com/photo-1432462770865-65b70566d673?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+        },
+        {
+          imageLink:
+            "https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2560&q=80",
+        },
+        {
+          imageLink:
+            "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80",
+        },
+        {
+          imageLink:
+            "https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2762&q=80",
+        },
+        {
+          imageLink:
+            "https://images.unsplash.com/photo-1682407186023-12c70a4a35e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80",
+        },
+      ],
+    },
+    {
+      label: "Flower",
+      value: "flower",
+      images: [
+        {
+          imageLink:
+            "https://demos.creative-tim.com/material-kit-pro/assets/img/examples/blog5.jpg",
+        },
+        {
+          imageLink:
+            "https://material-taillwind-pro-ct-tailwind-team.vercel.app/img/content2.jpg",
+        },
+        {
+          imageLink:
+            "https://images.unsplash.com/photo-1620064916958-605375619af8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1493&q=80",
+        },
+        {
+          imageLink:
+            "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80",
+        },
+        {
+          imageLink:
+            "https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2762&q=80",
+        },
+        {
+          imageLink:
+            "https://images.unsplash.com/photo-1682407186023-12c70a4a35e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80",
+        },
+      ],
+    },
+    {
+      label: "Aquatic",
+      value: "aquatic",
+      images: [
+        {
+          imageLink:
+            "https://demos.creative-tim.com/material-kit-pro/assets/img/examples/blog5.jpg",
+        },
+        {
+          imageLink:
+            "https://material-taillwind-pro-ct-tailwind-team.vercel.app/img/content2.jpg",
+        },
+        {
+          imageLink:
+            "https://images.unsplash.com/photo-1620064916958-605375619af8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1493&q=80",
+        },
+        {
+          imageLink:
+            "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80",
+        },
+        {
+          imageLink:
+            "https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2762&q=80",
+        },
+        {
+          imageLink:
+            "https://images.unsplash.com/photo-1682407186023-12c70a4a35e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80",
+        },
+      ],
+    },
+    {
+      label: "Climbers",
+      value: "climbers",
+      images: [
+        {
+          imageLink:
+            "https://demos.creative-tim.com/material-kit-pro/assets/img/examples/blog5.jpg",
+        },
+        {
+          imageLink:
+            "https://material-taillwind-pro-ct-tailwind-team.vercel.app/img/content2.jpg",
+        },
+        {
+          imageLink:
+            "https://images.unsplash.com/photo-1620064916958-605375619af8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1493&q=80",
+        },
+        {
+          imageLink:
+            "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80",
+        },
+        {
+          imageLink:
+            "https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2762&q=80",
+        },
+        {
+          imageLink:
+            "https://images.unsplash.com/photo-1682407186023-12c70a4a35e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80",
+        },
+      ],
+    },
+  ];
+ 
   return (
-    <section className=" pb-20">
-      <h2 className="text-2xl text-center font-bold text-[#1B3048] lg:text-4xl dark:text-white mb-8">
+  
+  <div className="mx-4 ">
+     <h2 className="text-2xl text-center font-bold text-[#1B3048] lg:text-4xl dark:text-white mb-8">
         Explore our <span className="text-[#275fa0]">Image Gallery</span>
       </h2>
-
-      <div className="py-4 px-2 mx-auto max-w-screen-xl sm:py-4 lg:px-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4 h-full">
-        <div className="col-span-2 sm:col-span-1 md:col-span-1 bg-sky-50 h-auto md:h-full flex flex-col">
-            <div className="group relative flex flex-col overflow-hidden rounded-lg px-4 pb-4 pt-40 flex-grow">
-              <img
-                src="https://img.freepik.com/free-vector/happy-earth-day-eco-friendly-concept-design_1035-26931.jpg?uid=R91079514&ga=GA1.1.1302518135.1720608685&semt=sph"
-                alt=""
-                className="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out"
-              />
-              <div className="absolute inset-0 bg-gradient-to-b from-gray-900/25 to-gray-900/5"></div>
-              <h3 className="z-10 bg-[#1B3048] text-2xl font-medium text-white absolute top-0 left-0 p-2 xs:text-xl md:text-xl rounded-br-lg">
-              Outsite Plant
-              </h3>
-            </div>
-          </div>
-
-         
-          <div className="col-span-2 sm:col-span-1 md:col-span-2 bg-stone-50">
-            <div className="group relative flex flex-col overflow-hidden rounded-lg px-4 pb-4 pt-40 mb-4">
-              <img
-                src="https://img.freepik.com/premium-photo/hand-holding-small-tree-planting-concept-green-world_34152-1480.jpg?uid=R91079514&ga=GA1.1.1302518135.1720608685&semt=sph"
-                alt=""
-                className="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out"
-              />
-              <div className="absolute inset-0 bg-gradient-to-b from-gray-900/25 to-gray-900/5"></div>
-              <h3 className="z-10 bg-[#1B3048] text-2xl font-medium text-white absolute top-0 left-0 p-2 xs:text-xl md:text-xl rounded-br-lg">
-               Fruit  Plant
-              </h3>
-            </div>
-            <div className="grid gap-4 grid-cols-2 sm:grid-cols-2 lg:grid-cols-2">
-              <div className="group relative flex flex-col overflow-hidden rounded-lg px-4 pb-4 pt-40">
+      <Tabs value="indoor">
+      <TabsHeader>
+        {data.map(({ label, value }) => (
+          <Tab key={value} value={value}>
+            {label}
+          </Tab>
+        ))}
+      </TabsHeader>
+      <TabsBody className="grid grid-cols-1 gap-4 ">
+        {data.map(({ value, images }) => (
+          <TabPanel
+            className="grid grid-cols-2 gap-4 md:grid-cols-3"
+            key={value}
+            value={value}
+          >
+            {images?.map(({ imageLink }, index) => (
+              <div key={index}>
+                
                 <img
-                  src="https://img.freepik.com/free-photo/cactus-plant-earth-tones-still-life_23-2151661863.jpg?uid=R91079514&ga=GA1.1.1302518135.1720608685&semt=sph"
-                  alt=""
-                  className="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out"
+                  className="h-40 w-full max-w-full rounded-lg object-cover object-center"
+                  src={imageLink}
+                  alt="image-photo"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-gray-900/25 to-gray-900/5"></div>
-                <h3 className="z-10 bg-[#1B3048] text-2xl font-medium text-white absolute top-0 left-0 p-2 xs:text-xl md:text-xl rounded-br-lg">
-                Insite Tree
-                </h3>
               </div>
-              <div className="group relative flex flex-col overflow-hidden rounded-lg px-4 pb-4 pt-40">
-                <img
-                  src="https://img.freepik.com/free-vector/green-potted-plant-room-interior-realistic-vector-illustration_1284-66947.jpg?uid=R91079514&ga=GA1.1.1302518135.1720608685&semt=sph"
-                  alt=""
-                  className="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out"
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-gray-900/25 to-gray-900/5"></div>
-                <h3 className="z-10 bg-[#1B3048] text-2xl font-medium text-white absolute top-0 left-0 p-2 xs:text-xl md:text-xl rounded-br-lg">
-                  Apple Tree
-                </h3>
-              </div>
-            </div>
-          </div>
-          <div className="col-span-2 sm:col-span-1 md:col-span-2  h-auto md:h-full flex flex-col">
-            
-            <div className="group relative flex flex-col overflow-hidden rounded-lg px-4 pb-4 pt-40 flex-grow">
-              <img
-                src="https://img.freepik.com/free-photo/hanging-pothos-plant-gray_53876-146607.jpg?uid=R91079514&ga=GA1.1.1302518135.1720608685&semt=sph"
-                alt=""
-                className="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out"
-              />
-              <div className=""></div>
-              <h3 className="z-10 bg-[#1B3048] text-2xl font-medium text-white absolute top-0 left-0 p-2 xs:text-xl md:text-xl rounded-br-lg">
-                Flower Plants
-              </h3>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
+            ))}
+          </TabPanel>
+        ))}
+      </TabsBody>
+    </Tabs>
+  </div>
   );
-};
-
+}
 export default Gallery;
