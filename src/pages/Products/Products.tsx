@@ -11,6 +11,7 @@ import { useGetAllProductsQuery, useProductAvailabilityCheckMutation } from "../
 import Loader from "../share/Loader";
 import { toast } from "sonner";
 import { addToCart, cartCount } from "../../redux/features/addCart/cartSlice";
+import Carosuel from "../../components/Carosuel/Carosuel";
 // import { toast } from "sonner";
 
 const Products = () => {
@@ -77,18 +78,12 @@ const Products = () => {
     }
   };
   return (
-    <div className="bg-[#EEEDEB]">
-      <div
-        className="h-[200px] bg-cover bg-center  grayscale"
-        style={{ backgroundImage: `url("https://www.thetreecenter.com/c/uploads/little-lime-hydrangea-1-340x453.webp")` }}
-      >
-        <div className="h-full w-full flex items-center justify-center bg-black bg-opacity-50">
-          <h1 className="text-white text-5xl">Products</h1>
-        </div>
-      </div>
-
+    <div className="">
+       <div className="px-4 mt-10">
+        <Carosuel/>
+       </div>
       <div className="py-20">
-        <div className="max-w-screen-xl mx-auto mb-7 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-10">
+        <div className="max-w-screen-xl mx-auto mb-7 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-10 px-4">
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
@@ -113,6 +108,8 @@ const Products = () => {
             <option value="Fruit Plants">Fruit Plants</option>
             <option value="Insite Plants">Insite Plants</option>
             <option value="Outsite Plants">Outsite Plants</option>
+            <option value="Aqatic  Plants">Aqatic Plants</option>
+            <option value="Climbers Plants">Climbers Plants</option>
           </select>
 
           <form onSubmit={(e) => e.preventDefault()}>

@@ -10,6 +10,7 @@ import {
 } from "../../redux/features/product/productSlice";
 import Loader from "../share/Loader";
 import Swal from "sweetalert2";
+import Carosuel from "../../components/Carosuel/Carosuel";
 
 const Management = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -69,15 +70,8 @@ const Management = () => {
 
   return (
     <div>
-      <div
-        className="h-[200px] "
-        style={{
-          backgroundImage: `url("https://www.thetreecenter.com/c/uploads/little-lime-hydrangea-1-340x453.webp")`,
-        }}
-      >
-        <div className="h-full w-full flex items-center justify-center bg-black bg-opacity-50">
-          <h1 className="text-white text-5xl">Management</h1>
-        </div>
+      <div className="pt-10 mx-4">
+        <Carosuel/>
       </div>
 
       <section className="flex flex-col justify-center antialiased  text-[#1B3048] py-20">

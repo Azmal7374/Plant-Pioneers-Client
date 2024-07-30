@@ -120,6 +120,8 @@ const AddProductModal = ({ open, handleOpen }: any) => {
               <option value="Outdoor Trees">Outsite Plants</option>
               <option value="Fruit Bearing Trees">Fruit Plants</option>
               <option value="Flower Trees">Flower Plants</option>
+              <option value="Aquatic Plants">Aquatic Plants</option>
+              <option value="Climbers Plants">Climbers Plants</option>
             </select>
 
             <Input

@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 const Hero = () => {
   return (
     <section className="pt-20 pb-10 ">
-      <div className="md:flex gap-10 justify-center">
+       <h2 className="text-2xl font-bold text-[#1B3048] lg:text-4xl dark:text-[#275fa0] text-center">
+        Let's Explore Our <span className="text-[#275fa0]">Products</span>
+      </h2>
+      <div className="md:flex gap-10 justify-center pt-6">
       <div className="max-w-screen-xl mx-auto text-gray-600 gap-x-12 items-center justify-between overflow-hidden md:flex md:px-8">
         <div className="flex-none space-y-5 px-4 sm:max-w-lg md:px-0 lg:max-w-xl">
         
