@@ -108,7 +108,7 @@ const Products = () => {
             <option value="Fruit Plants">Fruit Plants</option>
             <option value="Insite Plants">Insite Plants</option>
             <option value="Outsite Plants">Outsite Plants</option>
-            <option value="Aqatic  Plants">Aqatic Plants</option>
+            <option value="Aquatic  Plants">Aquatic Plants</option>
             <option value="Climbers Plants">Climbers Plants</option>
           </select>
 
