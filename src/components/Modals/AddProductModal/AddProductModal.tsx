@@ -116,8 +116,8 @@ const AddProductModal = ({ open, handleOpen }: any) => {
               <option value="default" disabled>
                 Select a category
               </option>
-              <option value="Indoor Plants">Insite Plants</option>
-              <option value="Outdoor Trees">Outsite Plants</option>
+              <option value="Indoor Plants">Indoor Plants</option>
+              <option value="Outdoor Trees">Oudoor Plants</option>
               <option value="Fruit Bearing Trees">Fruit Plants</option>
               <option value="Flower Trees">Flower Plants</option>
               <option value="Aquatic Plants">Aquatic Plants</option>

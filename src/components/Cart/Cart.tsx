@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../../redux/hook";
+import { Typography } from "@material-tailwind/react";
 
 const Cart = () => {
   const cartItems = useAppSelector((state) => state.cart.items);
@@ -11,13 +12,23 @@ const Cart = () => {
 
   return (
     <div>
-      <div
-        className="h-[200px] bg-cover bg-center bg-gray-400 grayscale"
-        style={{ backgroundImage: `url("")` }}
-      >
-        <div className="h-full w-full flex items-center justify-center bg-black bg-opacity-50">
-          <h1 className="text-white text-5xl">Cart</h1>
+      
+      <div className="px-4">
+      <figure className="relative h-96 w-full">
+      <img
+        className="h-full w-full rounded-xl object-cover object-center"
+        src="https://www.thetreecenter.com/c/uploads/little-lime-hydrangea-1-340x453.webp"
+        alt="nature image"
+      />
+      <figcaption className="absolute bottom-8 left-2/4 flex w-[calc(100%-4rem)] -translate-x-2/4 justify-between rounded-xl border border-white bg-white/75 py-4 px-6 shadow-lg shadow-black/5 saturate-200 backdrop-blur-sm text-center">
+        <div >
+          <Typography variant="h5" color="blue-gray">
+           Cart
+          </Typography>
         </div>
+         
+      </figcaption>
+    </figure>
       </div>
 
       <div className=" py-20">

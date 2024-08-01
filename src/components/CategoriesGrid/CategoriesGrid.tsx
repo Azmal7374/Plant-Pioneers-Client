@@ -15,11 +15,11 @@ const CategoriesGrid = () => {
 
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:gap-6 xl:gap-8">
             <Link
-                to={`/category/Insite Plants`}
+                to={`/category/Indoor Plants`}
               className="group relative flex h-48 items-center justify-center overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-80"
             >
               <img
-                src="https://www.thetreecenter.com/c/uploads/rhodendron-chionoides-1-450x450.webp"
+                src="https://media.istockphoto.com/id/1403237341/photo/urban-jungle.webp?b=1&s=170667a&w=0&k=20&c=JZtSsShaUrpNrVW-ZGaaP9k8OJiuvk4Sz0BUgWpbk6Q="
                 loading="lazy"
                 alt="Azmal"
                 className="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110"
@@ -33,11 +33,11 @@ const CategoriesGrid = () => {
             </Link>
 
             <Link
-             to={`/category/Outsite Plants`}
+             to={`/category/Outdoor Plants`}
               className="group relative flex h-48 items-center justify-center overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-80"
             >
               <img
-                src="https://www.thetreecenter.com/c/uploads/2019/08/Summer-Crush-Hydrangea-340x453.png"
+                src="https://media.istockphoto.com/id/1357789296/photo/children-boys-and-girls-help-each-other-plant-trees-in-the-forest-learn-about-the-environment.webp?b=1&s=170667a&w=0&k=20&c=2RH2zBbrpFbZaOhkzRwrgLtls3JjasF1rwHrK94mXiY="
                 loading="lazy"
                 alt="Azmal"
                 className="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110"
@@ -55,7 +55,7 @@ const CategoriesGrid = () => {
               className="group relative flex h-48 items-center justify-center overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-80"
             >
               <img
-                src="https://www.thetreecenter.com/c/uploads/2014/06/Endless_Summer_Hydrangea_5G_01-340x453.png"
+                src="https://media.istockphoto.com/id/171308173/photo/fresh-organic-strawberry.webp?b=1&s=170667a&w=0&k=20&c=7kBVgyzzJwEfAaJ_ROmdQdYo-OL1L3HofC0vmrVh_yM="
                 loading="lazy"
                 alt="Azmal"
                 className="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110"
@@ -73,7 +73,7 @@ const CategoriesGrid = () => {
               className="group relative flex h-48 items-center justify-center overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-80"
             >
               <img
-                src="https://www.thetreecenter.com/c/uploads/little-lime-hydrangea-1-340x453.webp"
+                src="https://images.unsplash.com/photo-1704813778605-475681242725?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Zmxvd2VyJTIwcGxhbnRzfGVufDB8fDB8fHww"
                 loading="lazy"
                 alt="Azmal"
                 className="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110"
@@ -91,7 +91,7 @@ const CategoriesGrid = () => {
               className="group relative flex h-48 items-center justify-center overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-80"
             >
               <img
-                src="https://www.thetreecenter.com/c/uploads/little-lime-hydrangea-1-340x453.webp"
+                src="https://media.istockphoto.com/id/1846443302/photo/beautiful-nature-landscape-red-lotus-sea-in-the-morning-thailand-lotus-red-lotus-sea.webp?b=1&s=170667a&w=0&k=20&c=N79sXH36JbQ0aCrmNlYB-qWQVaISD4OnGvKGzjzAZXo="
                 loading="lazy"
                 alt="Azmal"
                 className="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110"
@@ -110,7 +110,7 @@ const CategoriesGrid = () => {
               className="group relative flex h-48 items-center justify-center overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-80"
             >
               <img
-                src="https://www.thetreecenter.com/c/uploads/little-lime-hydrangea-1-340x453.webp"
+                src="https://media.istockphoto.com/id/2163628856/photo/a-male-proboscis-monkey-in-a-tree-in-the-rainforest-of-tanjung-puting-national-park-on-the.jpg?s=612x612&w=0&k=20&c=zhsLsNdK_w-qc6Rb5FUSfB-jDPeyi_PqyYJld6kJjZA="
                 loading="lazy"
                 alt="Azmal"
                 className="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110"

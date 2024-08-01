@@ -106,15 +106,14 @@ const Products = () => {
             </option>
             <option value="Flower Plants">Flower Plants</option>
             <option value="Fruit Plants">Fruit Plants</option>
-            <option value="Insite Plants">Insite Plants</option>
-            <option value="Outsite Plants">Outsite Plants</option>
-            <option value="Aquatic  Plants">Aquatic Plants</option>
+            <option value="Indoor Plants">Indoor Plants</option>
+            <option value="Outdoor Plants">Outdoor Plants</option>
+            <option value="Aquatic Plants">Aquatic Plants</option>
             <option value="Climbers Plants">Climbers Plants</option>
           </select>
 
           <form onSubmit={(e) => e.preventDefault()}>
             <Input
-              color="green"
               label="Search Product"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
