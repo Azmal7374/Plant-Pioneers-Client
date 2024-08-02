@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../../redux/hook";
 import { Typography } from "@material-tailwind/react";
+import useTitle from "../../hooks/useTitleHook";
 
 const Cart = () => {
+  useTitle("Cart");
   const cartItems = useAppSelector((state) => state.cart.items);
 
   const subtotal = cartItems.reduce(

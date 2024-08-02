@@ -11,8 +11,10 @@ import {
 import Loader from "../share/Loader";
 import Swal from "sweetalert2";
 import Carosuel from "../../components/Carosuel/Carosuel";
+import useTitle from "../../hooks/useTitleHook";
 
 const Management = () => {
+  useTitle("Management")
   const [currentPage, setCurrentPage] = useState(1);
 
   const { data, isLoading: isProductsLoading } = useGetAllProductsQuery({

@@ -6,7 +6,9 @@ import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import { useOrderCreateMutation } from "../../redux/features/product/productSlice";
 import { clearCart } from "../../redux/features/addCart/cartSlice";
 import { Typography } from "@material-tailwind/react";
+import useTitle from "../../hooks/useTitleHook";
 const Checkout = () => {
+  useTitle("Checkout");
   const cartItems = useAppSelector((state) => state.cart.items);
   const dispatch = useAppDispatch();
 

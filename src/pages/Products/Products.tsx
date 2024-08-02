@@ -12,8 +12,10 @@ import Loader from "../share/Loader";
 import { toast } from "sonner";
 import { addToCart, cartCount } from "../../redux/features/addCart/cartSlice";
 import Carosuel from "../../components/Carosuel/Carosuel";
+import useTitle from "../../hooks/useTitleHook";
 
 const Products = () => {
+  useTitle("Products");
   const dispatch = useAppDispatch();
 
   const [search, setSearch] = useState("");
