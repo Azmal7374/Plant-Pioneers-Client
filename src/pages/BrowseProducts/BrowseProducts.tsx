@@ -27,7 +27,7 @@ const BrowseProducts = () => {
     return <Loader />;
   }
 
-  const firstThreeProducts = data?.data?.data?.slice(0, 3);
+  const firstThreeProducts = data?.data?.data?.slice(0, 6);
 
   const handleAddToCart = async (item: any) => {
     setCurrentProductId(item._id);
@@ -127,8 +127,7 @@ const BrowseProducts = () => {
 
                 <Link
                   className="mt-5 text-white flex justify-center items-center gap-3 font-bold rounded-xl bg-[#1B3048] p-2 hover:bg-[#275fa0]"
-                  to={`/product/details/${item._id}`}
-                >
+                  to={`/product-details/${item._id}`}>
                   See details
                 </Link>
               </div>

@@ -1,30 +1,37 @@
-# React + TypeScript + Vite
+# Introduction
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project focuses on developing a user-friendly e-commerce platform designed to enhance the online shopping experience. Key features include browsing a comprehensive product list, searching for products by name or category, and filtering results by various criteria. Users can easily add items to their cart, view detailed cart information, and proceed to a seamless checkout process. The platform ensures a smooth transaction from selecting products to placing an order, providing customers with a convenient and efficient shopping journey.
 
-Currently, two official plugins are available:
+# Key Features:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1.  Products filter by different category
+2.  Search for products by name or category
+3.  list of products browse
+4.  products add to cart
+5.  view all add products cart details
+6.  procedd chekout
+7.  create order with cash on dalivery
 
-## Expanding the ESLint configuration
+# Technology Stack:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1.  React
+2.  Redux Toolkit
+3.  Tailwind Css
+4.  Material Tailwind
+5.  Sonar
+6.  SweetAlert2
 
-- Configure the top-level `parserOptions` property like this:
+# Installation Guideline:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+1.  step1- Clone the repository:
+    [Plant Pioneers!](https://github.com/Azmal7374/Plant-Pioneers-Client)
+2.  step-2: npm install
+3.  step-3: install other requires packege
+4.  step-4: Repalce base URL:
+    const baseQuery = fetchBaseQuery({
+    baseUrl: "http://localhost:5000/api/v1",
+    });
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+5. step-5: run this command: npm run dev
+
+

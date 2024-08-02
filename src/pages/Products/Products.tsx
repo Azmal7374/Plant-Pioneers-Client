@@ -12,7 +12,6 @@ import Loader from "../share/Loader";
 import { toast } from "sonner";
 import { addToCart, cartCount } from "../../redux/features/addCart/cartSlice";
 import Carosuel from "../../components/Carosuel/Carosuel";
-// import { toast } from "sonner";
 
 const Products = () => {
   const dispatch = useAppDispatch();
@@ -169,7 +168,7 @@ const Products = () => {
                       isCheckingLoading && item._id === currentProductId
                     }
                     onClick={() => handleAddToCart(item)}
-                    className="text-white flex justify-center items-center gap-3 font-bold rounded-xl bg-[#508D4E] p-2 hover:bg-[#1A5319]"
+                    className="text-white flex justify-center items-center gap-3 font-bold rounded-xl bg-[#275fa0] p-2 hover:bg-[#1B3048]"
                   >
                     <HiOutlineShoppingBag size={"25"} />
                     <h1>
