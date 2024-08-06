@@ -3,6 +3,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { useAddNewProductMutation } from "../../../redux/features/product/productSlice";
 import { ImSpinner9 } from "react-icons/im";
+import Swal from "sweetalert2";
 const AddProductModal = ({ open, handleOpen }: any) => {
   const [addNewProduct, { isLoading }] = useAddNewProductMutation();
   const [formValues, setFormValues] = useState({
@@ -50,6 +51,7 @@ const AddProductModal = ({ open, handleOpen }: any) => {
     };
 
     const result = await addNewProduct(payload).unwrap();
+    console.log(result)
 
     handleOpen();
 
@@ -63,9 +65,10 @@ const AddProductModal = ({ open, handleOpen }: any) => {
       rating: "default",
     });
 
-    toast.success("Product Added Successfully", {
-      id: toastId,
-      duration: 2000,
+    Swal.fire({
+      title: result.message,
+      text: "",
+      icon: "success",
     });
   };
   

@@ -3,7 +3,11 @@ import { Carousel } from "@material-tailwind/react";
 const Carosuel = () => {
     return (
         <div>
-             <Carousel transition={{ duration: 2 }} className="rounded-xl">
+             <Carousel
+              placeholder="" 
+              onPointerEnterCapture={() => {}} 
+              onPointerLeaveCapture={() => {}}
+             transition={{ duration: 2 }} className="rounded-xl">
       <img
         src="https://www.thetreecenter.com/c/uploads/schipka-cherry-laurel-1-1-450x450.avif"
         alt="image 1"

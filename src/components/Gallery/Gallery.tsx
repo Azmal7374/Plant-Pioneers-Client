@@ -1,6 +1,11 @@
-import { Tab, TabPanel, Tabs, TabsBody, TabsHeader } from "@material-tailwind/react";
+import {
+  Tab,
+  TabPanel,
+  Tabs,
+  TabsBody,
+  TabsHeader,
+} from "@material-tailwind/react";
 
- 
 const Gallery = () => {
   const data = [
     {
@@ -132,7 +137,8 @@ const Gallery = () => {
             "https://media.istockphoto.com/id/2119097509/photo/lotus.webp?b=1&s=170667a&w=0&k=20&c=7wptakHteNqeKSVkHy_aKrflrwsrMTolXQRw-lva7c0=",
         },
         {
-          imageLink:"https://media.istockphoto.com/id/1490214908/photo/anubias-barteri.jpg?s=612x612&w=0&k=20&c=GrOfHZ4X3D2UwM3pqoyyAPiifaDneIopCnExQtYyrnc=",
+          imageLink:
+            "https://media.istockphoto.com/id/1490214908/photo/anubias-barteri.jpg?s=612x612&w=0&k=20&c=GrOfHZ4X3D2UwM3pqoyyAPiifaDneIopCnExQtYyrnc=",
         },
         {
           imageLink:
@@ -176,50 +182,60 @@ const Gallery = () => {
           imageLink:
             "https://media.istockphoto.com/id/1674139904/photo/kids-playing-on-a-tree.jpg?s=612x612&w=0&k=20&c=H9QJXj3nOhjxLauqCsI-8GN4YrAaaJv5pb-UkegJW_w=",
         },
-      {
+        {
           imageLink:
             "https://media.istockphoto.com/id/2163628856/photo/a-male-proboscis-monkey-in-a-tree-in-the-rainforest-of-tanjung-puting-national-park-on-the.jpg?s=612x612&w=0&k=20&c=zhsLsNdK_w-qc6Rb5FUSfB-jDPeyi_PqyYJld6kJjZA=",
         },
       ],
     },
   ];
- 
+
   return (
-  
-  <div className="mx-4 ">
-     <h2 className="text-2xl text-center font-bold text-[#1B3048] lg:text-4xl dark:text-white mb-8">
+    <div className="mx-4 ">
+      <h2 className="text-2xl text-center font-bold text-[#1B3048] lg:text-4xl dark:text-white mb-8">
         Explore our <span className="text-[#275fa0]">Image Gallery</span>
       </h2>
       <Tabs value="indoor">
-      <TabsHeader>
-        {data.map(({ label, value }) => (
-          <Tab key={value} value={value}>
-            {label}
-          </Tab>
-        ))}
-      </TabsHeader>
-      <TabsBody className="grid grid-cols-1 gap-4 ">
-        {data.map(({ value, images }) => (
-          <TabPanel
-            className="grid grid-cols-2 gap-4 md:grid-cols-3"
-            key={value}
-            value={value}
-          >
-            {images?.map(({ imageLink }, index) => (
-              <div key={index}>
-                
-                <img
-                  className="h-40 w-full max-w-full rounded-lg object-cover object-center"
-                  src={imageLink}
-                  alt="image-photo"
-                />
-              </div>
-            ))}
-          </TabPanel>
-        ))}
-      </TabsBody>
-    </Tabs>
-  </div>
+        <TabsHeader
+          placeholder=""
+          onPointerEnterCapture={() => {}}
+          onPointerLeaveCapture={() => {}}
+        >
+          {data.map(({ label, value }) => (
+            <Tab key={value} value={value}
+            placeholder="" 
+        onPointerEnterCapture={() => {}} 
+        onPointerLeaveCapture={() => {}}
+            >
+              {label}
+            </Tab>
+          ))}
+        </TabsHeader>
+        <TabsBody
+         placeholder="" 
+         onPointerEnterCapture={() => {}} 
+         onPointerLeaveCapture={() => {}}
+        className="grid grid-cols-1 gap-4 ">
+          {data.map(({ value, images }) => (
+            <TabPanel
+              className="grid grid-cols-2 gap-4 md:grid-cols-3"
+              key={value}
+              value={value}
+            >
+              {images?.map(({ imageLink }, index) => (
+                <div key={index}>
+                  <img
+                    className="h-40 w-full max-w-full rounded-lg object-cover object-center"
+                    src={imageLink}
+                    alt="image-photo"
+                  />
+                </div>
+              ))}
+            </TabPanel>
+          ))}
+        </TabsBody>
+      </Tabs>
+    </div>
   );
-}
+};
 export default Gallery;

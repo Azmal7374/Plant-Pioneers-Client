@@ -3,7 +3,6 @@ import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { Button } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 
-import Swal from "sweetalert2";
 import { useState } from "react";
 import { useAppDispatch } from "../../redux/hook";
 import {
@@ -17,7 +16,7 @@ import Loader from "../share/Loader";
 const BrowseProducts = () => {
   const dispatch = useAppDispatch();
   const { data, isLoading } = useGetAllProductsQuery({});
-
+   console.log(data)
   const [currentProductId, setCurrentProductId] = useState<string | null>(null);
 
   const [checkIfAvailable, { isLoading: isCheckingLoading }] =

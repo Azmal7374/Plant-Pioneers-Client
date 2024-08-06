@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useParams } from "react-router-dom";
-import { useAppDispatch } from "../../redux/hook";
 import { useGetSingleProductQuery, useProductAvailabilityCheckMutation } from "../../redux/features/product/productSlice";
 import Loader from "../../pages/share/Loader";
+import Swal from "sweetalert2";
+import { addToCart, cartCount } from "../../redux/features/addCart/cartSlice";
+import { useAppDispatch } from "../../redux/hook";
 
 const ProductDetails = () => {
   const dispatch = useAppDispatch();
-
   const { id } = useParams();
 
   const { data, isLoading } = useGetSingleProductQuery(id);
@@ -17,6 +18,36 @@ const ProductDetails = () => {
   if (isLoading) {
     return <Loader />;
   }
+
+  const handleAddToCart = async (item: any) => {
+    const result = await checkIfAvailable(id);
+
+    if (result.error) {
+      Swal.fire({
+        title: "This product has been stocked out!!",
+        text: "",
+        icon: "error",
+      });
+
+      return;
+    }
+
+    try {
+      dispatch(cartCount(item._id));
+      dispatch(addToCart(item));
+      Swal.fire({
+        icon: "success",
+        title: `${item.title} has been added to your cart.`,
+        text: ``,
+      });
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "You've can't add this product to cart more than it's available quantity!",
+      });
+    }
+  };
 
   
   return (
@@ -72,8 +103,9 @@ const ProductDetails = () => {
 
               <div className="flex gap-2.5">
                 <button
-                  
-                  className="inline-block flex-1 rounded-lg bg-[#1B3048]  px-8 py-3 text-center text-sm font-semibold text-white outline-none transition duration-100 hover:bg-[#275fa0] focus-visible:ring active:bg-[#1B3048] sm:flex-none md:text-base"
+                  disabled={isCheckingLoading}
+                  onClick={() => handleAddToCart(data.data)}
+                  className="inline-block flex-1 rounded-lg bg-[#1B3048] px-8 py-3 text-center text-sm font-semibold text-white outline-none transition duration-100 hover:bg-[#275fa0] focus-visible:ring active:bg-[#275fa0] sm:flex-none md:text-base"
                 >
                   {isCheckingLoading ? (
                     <div className="flex justify-center items-center gap-4">
