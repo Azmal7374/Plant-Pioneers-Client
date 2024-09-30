@@ -17,10 +17,11 @@ const Management = () => {
   useTitle("Management")
   const [currentPage, setCurrentPage] = useState(1);
 
-  const { data, isLoading: isProductsLoading } = useGetAllProductsQuery({
+  const { data:Alldata, isLoading: isProductsLoading } = useGetAllProductsQuery({
     page: currentPage,
     limit: 6,
   });
+  console.log(Alldata)
 
   const [deleteProduct] = useDeleteProductMutation();
 
@@ -62,7 +63,7 @@ const Management = () => {
     return <Loader />;
   }
 
-  const totalPage = Math.ceil(data?.data?.total_products / 6);
+  const totalPage = Math.ceil(Alldata?.data?.total_products / 6);
   const pages = [...new Array(totalPage).fill(0)];
 
   const handlePagination = (page: number) => {
@@ -140,9 +141,9 @@ const Management = () => {
                     </tr>
                   </thead>
                   <tbody className="text-sm divide-y divide-gray-100">
-                    {data.data.data.length === 0
+                    {Alldata?.data?.data?.length === 0
                       ? null
-                      : data.data.data.map((item: any, index: number) => (
+                      : Alldata?.data?.data?.map((item: any, index: number) => (
                           <tr key={index}>
                             <td className="p-2 whitespace-nowrap">
                               <div className="flex items-center justify-center">

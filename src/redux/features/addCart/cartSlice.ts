@@ -52,6 +52,15 @@ type TCartItem = {
         state.items = [];
         state.count = 0;
       },
+      removeFromCart: (state, action: PayloadAction<string>) => {
+        const itemIndex = state.items.findIndex((item) => item._id === action.payload);
+        if (itemIndex !== -1) {
+          state.items.splice(itemIndex, 1);
+        }
+  
+        // Update count after removal
+        state.count = state.items.reduce((acc, item) => acc + item.quantity, 0);
+      },
   
       cartCount: (state, action) => {
         const existingItem = state.items.find(
@@ -64,10 +73,22 @@ type TCartItem = {
           state.count = state.count + 1;
         }
       },
+      incrementQuantity: (state, action: PayloadAction<string>) => {
+        const item = state.items.find(item => item._id === action.payload);
+        if (item) {
+          item.quantity += 1;
+        }
+      },
+      decrementQuantity: (state, action: PayloadAction<string>) => {
+        const item = state.items.find(item => item._id === action.payload);
+        if (item && item.quantity > 1) {
+          item.quantity -= 1;
+        }
+      },
     },
   });
   
-  export const { addToCart, clearCart, cartCount } = cartSlice.actions;
+  export const { addToCart, clearCart, cartCount,incrementQuantity,decrementQuantity, removeFromCart } = cartSlice.actions;
   
   export default cartSlice.reducer;
   

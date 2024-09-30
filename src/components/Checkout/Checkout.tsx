@@ -38,14 +38,15 @@ const Checkout = () => {
     }
 
     const payload = {
-      customerName: name,
-      customerEmail: email,
-      customerPhone: phoneNumber,
-      customerAddress: address,
+      name: name,
+      email: email,
+      phone: phoneNumber,
+      address: address,
       orderItems: cartItems,
     };
-
+console.log(payload);
     const result = await placeOrder(payload);
+    console.log(result);
 
     if (result.error) {
       Swal.fire({
@@ -154,7 +155,7 @@ const Checkout = () => {
                   crossOrigin={undefined}
                 />
               </div>
-
+    
               <button
                 disabled={isLoading}
                 type="submit"

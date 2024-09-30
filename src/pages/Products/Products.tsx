@@ -12,6 +12,7 @@ import { toast } from "sonner";
 import { addToCart, cartCount } from "../../redux/features/addCart/cartSlice";
 import Carosuel from "../../components/Carosuel/Carosuel";
 import useTitle from "../../hooks/useTitleHook";
+import useDebounce from "../../hooks/debounce.hook";
 
 const Products = () => {
   useTitle("Products");
@@ -23,14 +24,18 @@ const Products = () => {
   const [priceOrder] = useState("asc");
   const [currentPage, setCurrentPage] = useState(1);
 
+  const debouncedSearch = useDebounce(search, 500);
+
+
   const { data: allProducts, isLoading } = useGetAllProductsQuery({
     page: currentPage,
     limit: 6,
     category,
     sortBy,
-    search,
+    search:debouncedSearch,
     priceOrder,
   });
+  console.log(allProducts)
 
   const [currentProductId, setCurrentProductId] = useState<string | null>(null);
 
@@ -126,7 +131,7 @@ const Products = () => {
         </div>
 
         <div className="mx-auto grid max-w-screen-xl grid-cols-1 gap-6 p-6 md:grid-cols-2 lg:grid-cols-3">
-          {allProducts.data.data.map((item: any, index: number) => (
+          {allProducts?.data?.data?.map((item: any, index: number) => (
             <div
               key={index}
               className="rounded-xl bg-[#FCF8F3] p-3 shadow-lg hover:shadow-xl"
@@ -155,6 +160,9 @@ const Products = () => {
               <div className="mt-1 p-2">
                 <h2 className="text-[#1B3048] text-lg font-bold">
                   {item.title}
+                </h2>
+                <h2 className="text-[#1B3048] text-md font-bold">
+                 Available Quantity: {item.quantity}
                 </h2>
 
                 <div className="mt-3 flex items-end justify-between">
@@ -215,7 +223,7 @@ const Products = () => {
             Previous
           </Button>
 
-          {pages.map((_item, index) => (
+          {pages?.map((_item, index) => (
             <button
               key={index}
               className={` px-3 py-1 font-bold text-[12px] md:text-[18px] lg:text-[18px] hover:bg-[#2121211a] rounded-lg ${

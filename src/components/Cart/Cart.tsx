@@ -1,16 +1,45 @@
 import { Link } from "react-router-dom";
-import { useAppSelector } from "../../redux/hook";
+import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import { Typography } from "@material-tailwind/react";
 import useTitle from "../../hooks/useTitleHook";
+import { decrementQuantity, incrementQuantity, removeFromCart } from "../../redux/features/addCart/cartSlice";
+import { useEffect } from "react";
 
 const Cart = () => {
   useTitle("Cart");
+  const dispatch = useAppDispatch();
   const cartItems = useAppSelector((state) => state.cart.items);
 
   const subtotal = cartItems.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
   );
+  const handleRemoveItem = (id: string) => {
+    dispatch(removeFromCart(id));
+  };
+  const handleIncrement = (id: string) => {
+    dispatch(incrementQuantity(id));
+  };
+
+  const handleDecrement = (id: string) => {
+    dispatch(decrementQuantity(id));
+  };
+
+  useEffect(() => {
+    const handleBeforeUnload = (event: {
+      preventDefault: () => void;
+      returnValue: string;
+    }) => {
+      event.preventDefault();
+      event.returnValue = "";
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
 
   return (
     <div>
@@ -56,16 +85,31 @@ const Cart = () => {
                   />
                   <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between">
                     <div className="mt-5 sm:mt-0">
-                      <h2 className="text-xl font-bold text-[#1B3048]">
-                        {item.title}
-                      </h2>
-                      <p className="mt-1 text-lg text-[#275fa0]">
-                        {item.category}
-                      </p>
+                      <h2 className="text-xl font-bold text-[#1B3048]">{item.title}</h2>
+                      <p className="mt-1 text-lg text-[#275fa0]">{item.category}</p>
                     </div>
                     <div className="flex flex-col gap-5 text-lg text-[#1B3048]">
-                      <h1>Quantity: {item.quantity}</h1>
-
+                      <div className="flex items-center gap-2">
+                        <button
+                          className="px-3 py-1 text-lg bg-gray-300 rounded"
+                          onClick={() => handleDecrement(item._id)}
+                        >
+                          -
+                        </button>
+                        <h1>{item.quantity}</h1>
+                        <button
+                          className="px-3 py-1 text-lg bg-gray-300 rounded"
+                          onClick={() => handleIncrement(item._id)}
+                        >
+                          +
+                        </button>
+                      </div>
+                      <button
+                 className="px-3 py-1 text-lg bg-gray-300 rounded"
+                    onClick={() => handleRemoveItem(item._id)}
+                  >
+                    Remove
+                  </button>
                       <h1>Total Price: {item.quantity * item.price}</h1>
                     </div>
                   </div>
